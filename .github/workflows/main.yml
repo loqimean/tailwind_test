@@ -21,11 +21,12 @@ jobs:
       - name: Install Rails
         run: |
           source /etc/profile.d/rvm.sh
-          ruby -v
           rvm use 3.1.0
+          ruby -v
           sudo gem install railties -v 7.0.1
-          sudo gem install bundler
           rails -v
+      - name: Install Bundler
+        run: sudo gem install bundler
       - name: List all files
         run: ls
       - name: prepare DB
