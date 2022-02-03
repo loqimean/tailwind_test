@@ -8,10 +8,18 @@ jobs:
       RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: "3.1.0"
+      - name: Install ruby 3.1.0
+        run: |
+          sudo apt-get install software-properties-common
+          sudo apt-add-repository -y ppa:rael-gc/rvm
+          sudo apt-get update
+          sudo apt-get install rvm
+          source /etc/profile.d/rvm.sh
+          sudo usermod -a -G rvm $USER
+          rvm install 3.1.0
+          ruby -v
+          rails -v
       - name: List all files
-        run: ls && ruby -v
+        run: ls
       - name: prepare DB
         run: rails db:prepare
