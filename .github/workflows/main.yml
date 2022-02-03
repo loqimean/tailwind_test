@@ -1,0 +1,17 @@
+name: RSpec
+on:
+  push:
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install ruby 3.1.0
+        run: |
+          sudo apt-get install software-properties-common
+          sudo apt-add-repository -y ppa:rael-gc/rvm
+          sudo apt-get update
+          sudo apt-get install rvm
+          sudo usermod -a -G rvm $USER
+          rvm install 3.1.0
+          rvm list
+          ruby -v
