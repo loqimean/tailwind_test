@@ -18,6 +18,10 @@ jobs:
           sudo usermod -a -G rvm $USER
           rvm install 3.1.0
           ruby -v
+      - name: Install Rails
+        run: |
+          gem install railties -v 7.0.1
+          gem install bundler
           rails -v
       - name: List all files
         run: ls
