@@ -11,6 +11,7 @@ jobs:
           sudo apt-add-repository -y ppa:rael-gc/rvm
           sudo apt-get update
           sudo apt-get install rvm
+          source /etc/profile.d/rvm.sh
           sudo usermod -a -G rvm $USER
           rvm install 3.1.0
           rvm list
