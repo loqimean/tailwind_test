@@ -120,7 +120,9 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1-arm64-darwin)
       racc (~> 1.4)
-    puma (5.5.2)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
+    puma (5.6.1)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -186,6 +188,8 @@ GEM
     strscan (3.0.1)
     tailwindcss-rails (2.0.5-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.5-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -205,13 +209,14 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   debug
   importmap-rails
   jbuilder
-  puma (~> 5.0)
+  puma (~> 5.6)
   rails (~> 7.0.1)
   redis (~> 4.0)
   rspec-rails (~> 5.0.0)
