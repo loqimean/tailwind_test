@@ -28,6 +28,9 @@ jobs:
       # ruby -v
       # sudo gem install railties -v 7.0.1
       - name: Install Bundler
-        run: gem install bundler
+        run: |
+          gem install bundler
+      - name: Run Bundle
+        run: bundle install
       - name: List all files
         run: ls
