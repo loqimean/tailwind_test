@@ -11,6 +11,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
+          run: bundle lock --add-platform x86_64-linux
           bundler-cache: true
       - name: Check ruby version
         run: ruby -v
