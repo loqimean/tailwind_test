@@ -8,26 +8,32 @@ jobs:
       RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
-      - name: Install ruby 3.1.0
-        run: |
-          sudo apt-get install software-properties-common
-          sudo apt-add-repository -y ppa:rael-gc/rvm
-          sudo apt-get update
-          sudo apt-get install rvm
-          source /etc/profile.d/rvm.sh
-          sudo usermod -a -G rvm $USER
-          rvm install 3.1.0
-          ruby -v
+      - uses: ruby/ruby-setup@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+      - name: Check ruby version
+        run: ruby -v
+      - name: run bundle
+        run: bundle exec rake
+      # - name: Install ruby 3.1.0
+      #   run: |
+      #     sudo apt-get install software-properties-common
+      #     sudo apt-add-repository -y ppa:rael-gc/rvm
+      #     sudo apt-get update
+      #     sudo apt-get install rvm
+      #     source /etc/profile.d/rvm.sh
+      #     sudo usermod -a -G rvm $USER
+      #     rvm install 3.1.0
+      #     ruby -v
+      # source /etc/profile.d/rvm.sh
+      # rvm use 3.1.0
+      # ruby -v
+      # sudo gem install railties -v 7.0.1
       - name: Install Rails
         run: |
-          source /etc/profile.d/rvm.sh
-          rvm use 3.1.0
-          ruby -v
-          sudo gem install railties -v 7.0.1
           rails -v
       - name: Install Bundler
         run: sudo gem install bundler
       - name: List all files
         run: ls
-      - name: prepare DB
-        run: rails db:prepare
